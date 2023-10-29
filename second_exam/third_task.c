@@ -1,3 +1,9 @@
+/**************************************************
+* Название: third_task.c                          *
+* Задание: Шестая программа в осеннем семестре    *
+* Автор: в.с. рыбник, СПбГТИ (ТУ), 2023           *
+**************************************************/
+
 #include <stdlib.h>
 #include "third_struct.h"
 
@@ -22,7 +28,7 @@ void main_algorithm(Array array)
     }
     printf("Modificated Array: \n");
     output(array);
-    printf("Vector a (here placed old values of main diagonal): (");
+    printf("Vector A (here placed old values of main diagonal): (");
     for(int i = 0; i < 6; ++i)
     {
         printf(" %d, ", a[i]);
