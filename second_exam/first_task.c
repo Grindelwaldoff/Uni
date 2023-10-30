@@ -14,9 +14,9 @@ int main(void)
     int loop_indicator = 1;
     while (loop_indicator)
     {
-        printf("Vsevolod Rybnik Test 2 task 1 var. 26\n");
-        printf("Result: %f \n", formula(150));
-     	printf("Wanna see output again? (`any num` - yep, 0 - nope): ");
+        printf("  Vsevolod Rybnik Test 2 task 1 var. 26\n");
+        printf("  - Result: %f \n", formula(150));
+     	printf("  - Wanna see output again? (`any num` - yep, 0 - nope): ");
         scanf("%d", &loop_indicator);
     }
     return EXIT_SUCCESS;
