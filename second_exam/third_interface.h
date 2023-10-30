@@ -12,7 +12,7 @@ int GetInt(void)
         tempclear=0;
         if((!scanf("%d%c",&input ,&temprem))|| temprem != '\n')
         {
-            printf("Error: Invalid value for int variables.\nOne more time: ");
+            printf("  - Error: Invalid value for int variables.\nOne more time: ");
         	while(tempclear != '\n')
             	scanf("%c",&tempclear);
         }

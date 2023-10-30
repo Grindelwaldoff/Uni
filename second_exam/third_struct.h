@@ -1,5 +1,6 @@
 #include <time.h>
 #include <math.h>
+#include <locale.h>
 #include "third_interface.h"
 
 
@@ -41,7 +42,7 @@ Array make_array(int rows, int cols, int rand_man_indicator)
     {
         for (int row = 0; row < array.rows; row++) {
             for (int col = 0; col < array.cols; col++) {
-                printf("Specify %d %d element of Matrix: ", col, row);
+                printf("  - Specify %d %d element of Matrix: ", row+1, col+1);
                 array.data[row][col] = GetInt();
             }
     }
@@ -61,26 +62,24 @@ void clean_space(Array array)
 
 void output(Array array)
 {
-    printf(" _____________________________________\n");
+    printf("  %c", 218);
+	for (int i = 1; i < 38; i++)
+		printf("%c", 196);
+	printf("%c\n", 191);
     for (int row = 0; row < array.rows; row++) {
         for (int col = 0; col < array.cols; col++) {
             if (col == 0)
-                printf("|");
-            if (array.data[row][col] < 0 && floor(log10(abs(array.data[row][col]))) + 1 == 1)
-                printf("   ");
-            else if (array.data[row][col] < 0 && floor(log10(abs(array.data[row][col]))) + 1 == 2)
-                printf("  ");
-            else if (array.data[row][col] > 0 && floor(log10(abs(array.data[row][col]))) + 1 == 2)
-                printf("   ");
-            else if (array.data[row][col] > 0 && floor(log10(abs(array.data[row][col]))) + 1 == 3)
-                printf("  ");
-            else if (array.data[row][col] < 0 && floor(log10(abs(array.data[row][col]))) + 1 == 3)
-                printf(" ");
-            else
-                printf("    ");
+                printf("  %c", 179);
+			if (array.data[row][col] >= 0)
+				printf(" ");
+			double digits = floor(log10(abs(array.data[row][col]))) + 1;
+			printf("%*s", digits == 2? 2 : digits == 3? 1 : 3, " ");
             printf("%d ", array.data[row][col]);
         }
-        printf(" |\n");
+        printf(" %c\n", 179);
     }
-    printf(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾\n");
+	printf("  %c", 192);
+	for (int i = 1; i < 38; i++)
+		printf("%c", 196);
+	printf("%c\n", 217);
 }

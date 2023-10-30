@@ -16,7 +16,7 @@ int main(void)
     {
         printf("Vsevolod Rybnik Test 2 task 1 var. 26\n");
         printf("Result: %f \n", formula(150));
-     	printf("Wanna new data input? (`any num` - yep, 0 - nope): ");
+     	printf("Wanna see output again? (`any num` - yep, 0 - nope): ");
         scanf("%d", &loop_indicator);
     }
     return EXIT_SUCCESS;

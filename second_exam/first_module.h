@@ -33,3 +33,4 @@ double formula(int iteration_max)
     }
     return result;
 }
+
