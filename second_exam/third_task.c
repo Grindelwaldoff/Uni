@@ -54,6 +54,5 @@ int main(void)
         printf("Wanna new data input? (`any num` - yep, 0 - nope): ");
         scanf("%d", &loop_indicator);
     }
-
     return EXIT_SUCCESS;
 }
