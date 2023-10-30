@@ -1,6 +1,6 @@
 /**************************************************
-* Название: second_task.c                          *
-* Задание: Пятая программа в осеннем семестре *
+* Название: second_task.c                         *
+* Задание: Пятая программа в осеннем семестре     *
 * Автор: в.с. рыбник, СПбГТИ (ТУ), 2023           *
 **************************************************/
 
@@ -42,8 +42,6 @@ double find_endpoints(double *order)
 {
     double *first_array, *second_array;
     int border = ARRAY_SIZE / 2;
-    first_array = order(0, border);
-    second_array = slice(order, border, ARRAY_SIZE+1);
     for (int i = 0; i < ARRAY_SIZE; i++)
         printf("%f ", first_array[i]);
     printf("\n");
@@ -64,7 +62,7 @@ void main_algorithm(double *order)
 int main(void)
 {
     int rand_man_indicator = 1, loop_indicator = 1;
-    NSArray *order = {1, 2, 3, 4, 5, 6, 7};
+    double order[ARRAY_SIZE] = {1, 2, 3, 4, 5, 6, 7};
     printf("  Vsevolod Rybnik test 2 task 3 var 26\n");
     while (loop_indicator)
     {
