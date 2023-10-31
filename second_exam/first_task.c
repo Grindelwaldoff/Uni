@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include "first_module.h"
 
+#define SIGMA_AMOUNT 150
+
 
 int main(void)
 {
@@ -15,7 +17,7 @@ int main(void)
     while (loop_indicator)
     {
         printf("  Vsevolod Rybnik Test 2 task 1 var. 26\n");
-        printf("  - Result: %f \n", formula(150));
+        printf("  - Result: %f \n", formula(SIGMA_AMOUNT));
      	printf("  - Wanna see output again? (`any num` - yep, 0 - nope): ");
         scanf("%d", &loop_indicator);
     }

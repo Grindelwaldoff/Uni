@@ -4,6 +4,15 @@
 #include "third_interface.h"
 
 
+#define upper_left_border 218
+#define upper_right_border 191
+#define lower_left_border 192
+#define lower_right_border 217
+#define underline 196
+#define underline_amount 38
+#define aside_border 179
+
+
 struct TwoDimensionalArray {
     int rows;
     int cols;
@@ -51,35 +60,37 @@ Array make_array(int rows, int cols, int rand_man_indicator)
 }
 
 
-void clean_space(Array array)
+void clean_space(Array *array)
 {
-    for (int row_index = 0; row_index < array.rows; row_index++) {
-        free(array.data[row_index]);
+    for (int row_index = 0; row_index < array->rows; row_index++) {
+        free(array->data[row_index]);
+        array->data[row_index] = NULL;
     }
-    free(array.data);
+    free(array->data);
+    array->data = NULL;
 }
 
 
 void output(Array array)
 {
-    printf("  %c", 218);
-	for (int i = 1; i < 38; i++)
-		printf("%c", 196);
-	printf("%c\n", 191);
+    printf("  %c", upper_left_border);
+	for (int i = 1; i < underline_amount; i++)
+		printf("%c", underline);
+	printf("%c\n", upper_right_border);
     for (int row = 0; row < array.rows; row++) {
         for (int col = 0; col < array.cols; col++) {
             if (col == 0)
-                printf("  %c", 179);
+                printf("  %c", aside_border);
 			if (array.data[row][col] >= 0)
 				printf(" ");
 			double digits = floor(log10(abs(array.data[row][col]))) + 1;
 			printf("%*s", digits == 2? 2 : digits == 3? 1 : 3, " ");
             printf("%d ", array.data[row][col]);
         }
-        printf(" %c\n", 179);
+        printf(" %c\n", aside_border);
     }
-	printf("  %c", 192);
-	for (int i = 1; i < 38; i++)
-		printf("%c", 196);
-	printf("%c\n", 217);
+	printf("  %c", lower_left_border);
+	for (int i = 1; i < underline_amount; i++)
+		printf("%c", underline);
+	printf("%c\n", lower_right_border);
 }
