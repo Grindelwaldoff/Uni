@@ -1,4 +1,3 @@
-#include <time.h>
 #include <math.h>
 #include <locale.h>
 #include "third_interface.h"
@@ -36,7 +35,6 @@ Array random_values_for_array(Array array)
 
 Array make_array(int rows, int cols, int rand_man_indicator)
 {
-    srand(time(NULL));
     Array array;
     array.rows = rows;
     array.cols = cols;

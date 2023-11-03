@@ -5,6 +5,7 @@
 **************************************************/
 
 #include <stdlib.h>
+#include <time.h>
 #include "third_struct.h"
 
 #define cols_amount 6
@@ -12,6 +13,7 @@
 
 void main_algorithm(Array array)
 {
+    srand(time(NULL));
     int a[cols_amount];
     for (int row = 0; row < array.rows-1; row++) {
             int sum_values = 0;
