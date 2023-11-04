@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include "second_struct.h"
 
 
 int GetInt(void)
@@ -22,14 +23,15 @@ int GetInt(void)
 }
 
 
-double GetDouble(void)
+double GetDouble(char *label, int position)
 {
     char temprem, tempclear; // временный остаток
     double input  = 0;
     while(true)
     {
-        temprem=0;
-        tempclear=0;
+        printf("%s%d: ", label, position+1);
+        temprem = 0;
+        tempclear = 0;
         if((!scanf("%lf%c",&input ,&temprem))|| temprem != '\n')
         {
             printf("  - Error: Invalid value for double variables.\n  - One more time: ");
@@ -39,4 +41,25 @@ double GetDouble(void)
     else
         return input;
     }
+}
+
+
+void output(char *name, int left_border, int right_border, double order[])
+{
+    printf("%s order: (", name);
+    for (int i = left_border; i < right_border; i++)
+        printf("%0.2f, ", order[i]);
+    printf(")\n");
+}
+
+
+
+double* input(double order[], double (*input_type)(char *, int), HashTable* min_max_table, char *label, int ARRAY_SIZE)
+{
+    for (int i = 0; i < ARRAY_SIZE; i++)
+    {
+        order[i] = input_type(label, i);
+        min_max_table = max_min_finder(order[i], min_max_table, i);
+    }
+    return order;
 }

@@ -6,41 +6,29 @@
 
 #include <string.h>
 #include <time.h>
-#include "second_input_modules.h"
-#include "second_struct.h"
+#include <math.h>
+#include "second_interface_modules.h"
 
-#define ARRAY_SIZE 7
+#define ARRAY_SIZE 25
 
 
 enum MENU {ManualInput=1, RandomInput=2, Quit =3};
 
 
-HashTable* max_min_finder(double element, HashTable* min_max_table, int i)
-{
-    insert(min_max_table, "min", ((element < get(min_max_table, "min"))? element : (i == 1)? element : get(min_max_table, "min")));
-    insert(min_max_table, "max", ((element > get(min_max_table, "max"))? element : (i == 1)? element : get(min_max_table, "max")));
-    insert(min_max_table, "min_index", ((element == get(min_max_table, "min"))? i : get(min_max_table, "min_index")));
-    insert(min_max_table, "max_index", ((element == get(min_max_table, "max"))? i : get(min_max_table, "max_index")));
-    return min_max_table;
-}
-
-
 void Calculation(double order[], HashTable* min_max_table)
 {
-    printf("Original order: (");
-    for (int i = 0; i < ARRAY_SIZE; i++)
-        printf("%f, ", order[i]);
-    printf(")\n");
+    output("Original", 0, ARRAY_SIZE, order);
     int slice = (((int) get(min_max_table, "min_index")) + ((int) get(min_max_table, "max_index"))) /2;
-    printf("X order: (");
-    for (int i = 0; i <= slice; i++)
-        printf("%f, ", order[i]);
-    printf(")\n");
-    printf("Y order: (");
-    for (int i = slice + 1; i < ARRAY_SIZE; i++)
-        printf("%f, ", order[i]);
-    printf(")\n");
+    output("X", 0, slice, order);
+    output("Y", slice+1, ARRAY_SIZE, order);
 }
+
+
+double random_value(char *name, int i)
+{
+    return round(-9999 + rand()%(10000 + 9800))/100;
+}
+
 
 
 int main(void)
@@ -57,20 +45,12 @@ int main(void)
         switch (options)
         {
             case ManualInput:
-                for (int i = 0; i < ARRAY_SIZE; i++)
-                {
-                    printf("%d array element:", i+1);
-                    order[i] = GetDouble();
-                    min_max_table = max_min_finder(order[i], min_max_table, i);
-	            }
+                input(order, GetDouble, min_max_table, "Specify array element №", ARRAY_SIZE);
+                Calculation(order, min_max_table);
                 destroyHashTable(min_max_table);
                 continue;
             case RandomInput:
-                for (int i = 0; i < ARRAY_SIZE; i++)
-                    {
-                        order[i] = -99 + rand()%(100 + 98);
-                        min_max_table = max_min_finder(order[i], min_max_table, i);
-	                }
+                input(order, random_value, min_max_table, NULL, ARRAY_SIZE);
                 Calculation(order, min_max_table);
                 destroyHashTable(min_max_table);
                 continue;
