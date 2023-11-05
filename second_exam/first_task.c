@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include "first_module.h"
 
-#define SIGMA_AMOUNT 3
+#define SIGMA_AMOUNT 150
 
 
 int main(void)
