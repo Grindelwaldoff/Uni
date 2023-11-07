@@ -15,10 +15,10 @@ void main_algorithm(Array array)
 {
     srand(time(NULL));
     int a[cols_amount];
-    for (int row = 0; row < array.rows-1; row++) {
+    for (int row = 0; row < array.rows; row++) {
             int sum_values = 0;
             a[row] = array.data[row][row];
-            if (a[row] != 0){
+            if (a[row] != 0 && row != 5){
                 for (int col = (row + 1); col < array.cols; col++) {
                     sum_values += array.data[row][col];
                 }

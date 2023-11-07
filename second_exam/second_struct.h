@@ -27,13 +27,13 @@ typedef struct {
 
 int hash(char* key) {
     int hashValue = 0;
-    for (int i = 0; i < strlen(key); i++) {
+    for (int i = 0; i < (int)strlen(key); i++) {
         hashValue += key[i];
     }
     return hashValue % TABLE_SIZE;
 }
 
-HashTable* createHashTable() {
+HashTable* createHashTable(void) {
     HashTable* hashTable = (HashTable*) malloc(sizeof(HashTable));
     hashTable->entries = (Entry*) malloc(TABLE_SIZE * sizeof(Entry));
     hashTable->size = TABLE_SIZE;
@@ -53,7 +53,7 @@ void insert(HashTable* hashTable, char* key, double value) {
         }
         index = (index + 1) % hashTable->size;
     }
-    hashTable->entries[index].key = strdup(key);
+    hashTable->entries[index].key = _strdup(key);
     hashTable->entries[index].value = value;
 }
 
