@@ -15,6 +15,7 @@ NO COMMENTS
 
 #define TABLE_SIZE 4
 
+
 typedef struct {
     char* key;
     double value;
@@ -24,6 +25,7 @@ typedef struct {
     Entry* entries;
     int size;
 } HashTable;
+
 
 int hash(char* key) {
     int hashValue = 0;
@@ -53,7 +55,7 @@ void insert(HashTable* hashTable, char* key, double value) {
         }
         index = (index + 1) % hashTable->size;
     }
-    hashTable->entries[index].key = _strdup(key);
+    hashTable->entries[index].key = strdup(key);
     hashTable->entries[index].value = value;
 }
 

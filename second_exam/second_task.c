@@ -5,9 +5,11 @@
 **************************************************/
 
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include <math.h>
-#include "second_interface_modules.h"
+#include "second_interface_module.h"
 
 #define ARRAY_SIZE 25
 

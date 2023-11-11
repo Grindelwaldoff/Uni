@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "second_struct.h"
+#include "second_hash_table_module.h"
 
 
 int GetInt(void)
