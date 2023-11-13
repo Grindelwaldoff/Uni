@@ -63,7 +63,7 @@ void insert(HashTable* hashTable, char* key, double value) {
         }
         index = (index + 1) % hashTable->size;
     }
-    hashTable->entries[index].key = strdup(key);
+    hashTable->entries[index].key = _strdup(key);
     hashTable->entries[index].value = value;
 }
 
