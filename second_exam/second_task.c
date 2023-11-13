@@ -22,7 +22,7 @@ void Calculation(double order[], HashTable* min_max_table)
     output("Original", 0, ARRAY_SIZE, order);
     int slice = (((int) get(min_max_table, "min_index")) + ((int) get(min_max_table, "max_index"))) /2;
     output("X", 0, slice, order);
-    output("Y", slice+1, ARRAY_SIZE, order);
+    output("Y", slice, ARRAY_SIZE, order);
 }
 
 
@@ -41,8 +41,9 @@ int main(void)
     printf("  Vsevolod Rybnik test 2 task 3 var 26\n");
     while (loop_indicator)
     {
+        // printf("%d %d %d", hash("hel"), hash("leh"), hash("cau"));
         HashTable* min_max_table = createHashTable();
-        puts("  1 - Manuale inpute\n  2 - Randome inpute\n  3 - Quite");
+        puts("  1 - Manual input\n  2 - Random input\n  3 - Quit");
         options = GetInt();
         switch (options)
         {

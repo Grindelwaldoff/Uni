@@ -46,9 +46,9 @@ double GetDouble(char *label, int position)
 
 void output(char *name, int left_border, int right_border, double order[])
 {
-    printf("%s order: (", name);
-    for (int i = left_border; i < right_border; i++)
-        printf("%0.2f, ", order[i]);
+    printf("%s order: (%0.2f", name, order[left_border]);
+    for (int i = left_border+1; i < right_border; i++)
+        printf(", %0.2f", order[i]);
     printf(")\n");
 }
 

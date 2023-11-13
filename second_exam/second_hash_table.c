@@ -10,10 +10,14 @@ NO COMMENTS
 */
 
 
+#include <stdint.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 
 #define TABLE_SIZE 4
+#define FNV_OFFSET 1052960442348
+#define FNV_PRIME 1099511628234
 
 
 typedef struct {
@@ -27,13 +31,18 @@ typedef struct {
 } HashTable;
 
 
+
+
 int hash(char* key) {
     int hashValue = 0;
     for (int i = 0; i < (int)strlen(key); i++) {
+        hashValue ^= (int)(unsigned char) key[i];
         hashValue += key[i];
     }
-    return hashValue % TABLE_SIZE;
+    return hashValue;
 }
+
+
 
 HashTable* createHashTable(void) {
     HashTable* hashTable = (HashTable*) malloc(sizeof(HashTable));
@@ -41,7 +50,6 @@ HashTable* createHashTable(void) {
     hashTable->size = TABLE_SIZE;
     for (int i = 0; i < TABLE_SIZE; i++) {
         hashTable->entries[i].key = NULL;
-        hashTable->entries[i].value = 0;
     }
     return hashTable;
 }
@@ -85,8 +93,11 @@ void destroyHashTable(HashTable* hashTable) {
     for (int i = 0; i < hashTable->size; i++) {
         if (hashTable->entries[i].key!= NULL) {
             free(hashTable->entries[i].key);
+			hashTable->entries[i].key = NULL;
         }
     }
     free(hashTable->entries);
+	hashTable->entries = NULL;
     free(hashTable);
+	hashTable = NULL;
 }
