@@ -11,7 +11,7 @@
 #include <math.h>
 #include "second_interface_module.h"
 
-#define ARRAY_SIZE 25
+#define ARRAY_SIZE 5
 
 
 enum MENU {ManualInput=1, RandomInput=2, Quit =3};
@@ -21,6 +21,7 @@ void Calculation(double order[], HashTable* min_max_table)
 {
     output("Original", 0, ARRAY_SIZE, order);
     int slice = (((int) get(min_max_table, "min_index")) + ((int) get(min_max_table, "max_index"))) /2;
+    printf("%d %d\n", (int) get(min_max_table, "min_index"), (int) get(min_max_table, "max_index"));
     output("X", 0, slice, order);
     output("Y", slice, ARRAY_SIZE, order);
 }

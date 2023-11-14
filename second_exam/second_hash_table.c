@@ -81,10 +81,10 @@ double get(HashTable* hashTable, char* key) {
 
 HashTable* max_min_finder(double element, HashTable* min_max_table, int i)
 {
-    insert(min_max_table, "min", ((element < get(min_max_table, "min"))? element : (i == 1)? element : get(min_max_table, "min")));
-    insert(min_max_table, "max", ((element > get(min_max_table, "max"))? element : (i == 1)? element : get(min_max_table, "max")));
-    insert(min_max_table, "min_index", ((element == get(min_max_table, "min"))? i : get(min_max_table, "min_index")));
-    insert(min_max_table, "max_index", ((element == get(min_max_table, "max"))? i : get(min_max_table, "max_index")));
+    insert(min_max_table, "min", ((element < get(min_max_table, "min"))? element : (i == 0)? element : get(min_max_table, "min")));
+    insert(min_max_table, "max", ((element > get(min_max_table, "max"))? element : (i == 0)? element : get(min_max_table, "max")));
+    insert(min_max_table, "min_index", ((element > get(min_max_table, "min"))? i : (i == 0)? i : get(min_max_table, "min_index")));
+    insert(min_max_table, "max_index", ((element > get(min_max_table, "max"))? i : (i == 0)? i : get(min_max_table, "max_index")));
     return min_max_table;
 }
 
